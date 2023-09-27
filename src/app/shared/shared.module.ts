@@ -21,7 +21,8 @@ import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.componen
     PrimengModule
   ],
   exports: [
-    HeaderComponent
+    HeaderComponent,
+    BreadcrumbComponent
   ]
 })
 export class SharedModule { }
