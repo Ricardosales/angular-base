@@ -1,0 +1,11 @@
+<p-menubar [model]="menuItems">
+    <ng-template pTemplate="start">
+        <img src="assets/my-icon.png" height="40" class="mr-3" />
+    </ng-template>
+    <ng-template pTemplate="end">
+        <button #button pButton type="button" icon="pi pi-user" class="p-button-text"
+            (click)="this.menu.toggle($event)"></button>
+        <p-menu #menu [model]="menuItemsPerfil" [popup]="true" (onShow)="onFocuButtonMeny(true)"
+            (onHide)="onFocuButtonMeny(false)"></p-menu>
+    </ng-template>
+</p-menubar>
