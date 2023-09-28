@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, delay, of, tap } from 'rxjs';
+import { Observable, Subject, delay, of, tap } from 'rxjs';
 import { User } from './models/user.model';
 import { LoginModel } from './models/login.model';
 import { UserDataService } from '../core/store/user-storage.service';
@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService {
+  private isLoggedInSubject: Subject<boolean> = new Subject<boolean>();
 
   constructor(private userData: UserDataService, public router: Router) { }
 
@@ -51,7 +52,13 @@ export class AuthService {
     return user
   }
 
-  isLoggedIn(): Boolean {
-    return this.getUser().id !== 0;
+  isLoggedIn(): boolean {
+    const loggedIn = this.getUser().id !== 0;
+    this.isLoggedInSubject.next(loggedIn);
+    return loggedIn;
+  }
+
+  onAuthenticationChange() {
+    return this.isLoggedInSubject.asObservable();
   }
 }
