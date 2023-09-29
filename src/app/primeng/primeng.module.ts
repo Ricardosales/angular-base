@@ -8,6 +8,10 @@ import { DividerModule } from 'primeng/divider';
 import { MenuModule } from 'primeng/menu';
 import { TieredMenuModule } from 'primeng/tieredmenu';
 import { BreadcrumbModule } from 'primeng/breadcrumb';
+import { CardModule } from 'primeng/card';
+import { FileUploadModule } from 'primeng/fileupload';
+import { DropdownModule } from 'primeng/dropdown';
+import { ToastModule } from 'primeng/toast';
 
 @NgModule({
   declarations: [],
@@ -22,7 +26,11 @@ import { BreadcrumbModule } from 'primeng/breadcrumb';
     DividerModule,
     TieredMenuModule,
     BreadcrumbModule,
-    CheckboxModule
+    CheckboxModule,
+    CardModule,
+    FileUploadModule,
+    DropdownModule,
+    ToastModule
   ]
 })
 export class PrimengModule { }

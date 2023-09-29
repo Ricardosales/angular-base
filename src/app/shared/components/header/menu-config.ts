@@ -19,7 +19,7 @@ export const menuItems: MenuItem[] = [
 
 export const menuItemsPerfil: MenuItem[] = [
     { label: '', visible: false },
-    { label: 'Perfil', icon: 'pi pi-fw pi-user' },
+    { label: 'Perfil', icon: 'pi pi-fw pi-user', routerLink: ['perfil'] },
     { separator: true },
     { label: 'Sair', icon: 'pi pi-fw pi-power-off', routerLink: ['logout'] }
 ];

@@ -22,7 +22,8 @@ export class AuthService {
       id: 1,
       email: loginM.email,
       firstName: "Ricardo",
-      lastName: "Sales"
+      lastName: "Sales",
+      modeDark: false
     }
 
     return of(true).pipe(
@@ -41,7 +42,8 @@ export class AuthService {
       id: 0,
       email: "",
       firstName: "",
-      lastName: ""
+      lastName: "",
+      modeDark: false
     }
 
     this.currentUser = this.userData.getUser();

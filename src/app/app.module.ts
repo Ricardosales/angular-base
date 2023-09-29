@@ -8,6 +8,7 @@ import { CoreModule } from './core/core.module';
 import { AdminModule } from './admin/admin.module';
 import { AuthModule } from './auth/auth.module';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { FeaturesModule } from './features/features.module';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     SharedModule,
     CoreModule,
     AdminModule,
+    FeaturesModule,
     AuthModule
   ],
   providers: [],

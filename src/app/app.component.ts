@@ -2,6 +2,8 @@ import { DOCUMENT } from '@angular/common';
 import { Component, Inject, Injector, OnInit } from '@angular/core';
 import { AuthService } from './auth/auth.service';
 import { ThemeStorageService } from './core/store/theme-storage.service';
+import { UserDataService } from './core/store/user-storage.service';
+import { ThemeService } from './core/services/theme.service';
 
 @Component({
   selector: 'app-root',
@@ -13,28 +15,22 @@ export class AppComponent implements OnInit {
   themSelection: boolean = false;
   isLoggedIn: boolean = false;
 
-  constructor(@Inject(DOCUMENT) private document: Document,
-    private authService: AuthService,
-    private themeStorage: ThemeStorageService) {
+  constructor(private authService: AuthService,
+    private userStore: UserDataService,
+    private themeService: ThemeService) {
 
-    let theme = themeStorage.getTheme();
+    let theme = this.userStore.getUser();
     if (theme) {
-      this.themSelection = theme == 'dark' ? true : false;
-      this.changeTheme(this.themSelection);
+      this.themSelection = theme.modeDark ? true : false;
+      console.log(this.themSelection);
+      this.themeService.changeThemeForDark(this.themSelection);
     }
   }
+
   ngOnInit(): void {
     this.isLoggedIn = this.authService.isLoggedIn();
     this.authService.onAuthenticationChange().subscribe((loggedIn: boolean) => {
       this.isLoggedIn = loggedIn;
     });
-  }
-
-  changeTheme(state: boolean) {
-    let theme = state ? 'dark' : 'light';
-    this.themeStorage.setTheme(theme);
-
-    let themeLink = this.document.getElementById('app-theme') as HTMLLinkElement;
-    themeLink.href = 'lara-' + theme + '-indigo' + '.css';
   }
 }
